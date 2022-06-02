@@ -21,37 +21,38 @@ tmux splitw -h -p 50
 
 # Select pane 2 
 tmux selectp -t 1
-tmux send-keys "cd" C-m
+tmux send-keys "cd ~/Downloads" C-m
 tmux send-keys "clear" C-m
 # Split pane 2 vertically by 50%
 tmux splitw -v -p 50
 tmux send-keys "cd" C-m
+tmux send-keys "vf activate py3.10" C-m
+tmux send-keys "ipython" C-m
 tmux send-keys "clear" C-m
 
 # create a new window called adhoc
-tmux new-window -t $session:1 -n adhoc
+tmux new-window -t $session:1 -n adhoc1
+tmux send-keys "cd" C-m
+tmux send-keys "clear" C-m
+
+# create a new window called vim
+tmux new-window -t $session:2 -n adhoc2
 tmux send-keys "cd" C-m
 tmux send-keys "clear" C-m
 
 # create a new window called k8s
-tmux new-window -t $session:2 -n k8s
+tmux new-window -t $session:3 -n k8s/docker
 tmux send-keys "cd" C-m
 tmux send-keys "clear" C-m
 
 # create a new window called repos
-tmux new-window -t $session:3 -n repos
+tmux new-window -t $session:4 -n repos
 tmux send-keys "repos" C-m
 tmux send-keys "clear" C-m
 
-# create a new window called vim
-tmux new-window -t $session:4 -n vim
-tmux send-keys "cd" C-m
-tmux send-keys "clear" C-m
-
-# create a new window called pi
-tmux new-window -t $session:5 -n pi
-tmux send-keys "sshpi" C-m 
-tmux send-keys "clear" C-m
+# create a new window called glances
+tmux new-window -t $session:5 -n glances
+tmux send-keys "glances" C-m
 
 # return to main vim window
 tmux select-window -t $session:0
